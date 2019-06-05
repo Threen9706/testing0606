@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 520px;
+            vertical-align: top;
+            /* vertical-align 属性设置元素的垂直对齐方式 */
+        }
+
+        /* 取消图片底部三像素距离 */
+        .box {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            background-color: pink;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ul {
+            width: 3120px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="screen">
+        <ul>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+        </ul>
+
+
+    </div>
+    <script src="common.js"></script>
+    <script>
+
+        //声明变量current存储当前位置信息
+        var current = 0;
+        function f1() {
+            //获取ul
+            var ulObj = my$("screen").children[0];
+            //ul每次移动10像素
+            current -= 10;
+
+            //如果移动到的像素大于前五张图片的宽度之和，则设置为零-跳至第一张
+            if (current < -2600) {
+                ulObj.style.left = 0 + "px";
+                //置零之后可跳出判断继续执行定时器
+                current = 0;
+            } else {
+                ulObj.style.left = current + "px";
+            }
+        }
+
+        var timeId = setInterval(f1, 20);
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
